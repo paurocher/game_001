@@ -1,0 +1,64 @@
+{
+    "Map/SizeTest": {
+        "height": 4300,
+        "width": 2
+    },
+    "activeFile": "map_prova_001.tmx",
+    "expandedProjectPaths": [
+    ],
+    "file.lastUsedOpenFilter": "All Files (*)",
+    "fileStates": {
+        "map_prova_001.tmx": {
+            "scale": 0.25,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 94,
+                "y": 206
+            }
+        },
+        "objects.tsx": {
+            "dynamicWrapping": true,
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "player.tsx": {
+            "dynamicWrapping": true,
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "terrain.tsx": {
+            "dynamicWrapping": false,
+            "scaleInDock": 1,
+            "scaleInEditor": 4
+        },
+        "terrain_without_collisions.tsx": {
+            "dynamicWrapping": false,
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        }
+    },
+    "last.exportedFilePath": "/home/fuku/PycharmProjects/game_001/art/tiled_projects",
+    "last.externalTilesetPath": "/home/fuku/PycharmProjects/game_001/art/tiled_projects",
+    "last.imagePath": "/home/fuku/PycharmProjects/game_001/art/objects/Player/walk_down/walk_down",
+    "map.fixedSize": false,
+    "map.lastUsedExportFilter": "Tiled map files (*.tmx *.xml)",
+    "map.lastUsedFormat": "tmx",
+    "map.tileHeight": 24,
+    "map.tileWidth": 24,
+    "openFiles": [
+        "map_prova_001.tmx",
+        "objects.tsx"
+    ],
+    "project": "prova01.tiled-project",
+    "property.type": "bool",
+    "recentFiles": [
+        "objects.tsx",
+        "map_prova_001.tmx",
+        "terrain.tsx",
+        "player.tsx",
+        "terrain_without_collisions.tsx"
+    ],
+    "tileset.lastUsedFilter": "Tiled tileset files (*.tsx *.xml)",
+    "tileset.lastUsedFormat": "tsx",
+    "tileset.type": 1
+}
