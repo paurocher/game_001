@@ -1,5 +1,6 @@
 from settings import *
 
+
 class CollisionSprite(pg.sprite.Group):
     """THis one is not that necessary. I just created it to draw boxes around
     the sprite in this group (for now ...). I am not sure if I will find a
@@ -7,10 +8,6 @@ class CollisionSprite(pg.sprite.Group):
     def __init__(self):
         super().__init__()
         self.display_surface = pg.display.get_surface()
-
-    # def draw(self, surf):
-    #     for sprite in self:
-    #         pg.draw.rect(surf, "red", sprite.rect, 1)
 
 
 class MainSprites(pg.sprite.Group):
@@ -44,24 +41,7 @@ class AllSprites(pg.sprite.Group):
         )) / SCALE
         self.camera_rect = pg.Rect(left, top, width, height)
 
-        self.scaley = None
-
-    def center_to_target(self):
-        # self.center_offset.x -= self.offset.x
-        # self.center_offset.y -= self.offset.y
-        pass
-
-
-    def scale_camera_rect(self):
-
-        print(self.scaley)
-        self.camera_rect.scale_by(self.scaley)
-
     def box_target_camera(self, target):
-        # print("target.left:", target, "self.camera_rect.left",
-        #     self.camera_rect, end="\n\r\r", flush=True)
-        self.scale_camera_rect()
-        print(self.camera_rect, SCALE)
         if target.left < self.camera_rect.left:
             self.camera_rect.left = target.left
         if target.right > self.camera_rect.right:
@@ -73,13 +53,6 @@ class AllSprites(pg.sprite.Group):
 
         self.offset.x = (self.camera_rect.left - self.camera_borders["left"])
         self.offset.y = (self.camera_rect.top - self.camera_borders["top"])
-
-        # self.offset.x = self.offset.x - self.offset.x * (SCALE - 1)
-
-        # print("self.offset:", self.offset, "self.camera_rect:",
-        #     self.camera_rect.center)
-        # self.offset.x = self.offset.x - self.offset.x * SCALE
-
 
     def draw(self, target_pos):
         self.box_target_camera(target_pos)
@@ -99,5 +72,3 @@ class AllSprites(pg.sprite.Group):
             if sprite.z == 1:
                 self.display_surface.blit(sprite.image, sprite.rect.topleft -
                                                         self.offset)
-
-        # pg.draw.rect(self.display_surface, "yellow", self.camera_rect, 4)
