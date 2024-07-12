@@ -4,7 +4,8 @@ from settings import *
 class Sprite(pg.sprite.Sprite):
     def __init__(self, pos, surf, groups, z):
         super().__init__(groups)
-        self.image = surf
+        self.image = pg.transform.scale_by(surf, (SCALE, SCALE))
+        print(self.image, self.image.get_rect())
 
         # rects
         self.rect = self.image.get_frect(topleft=pos)
@@ -13,7 +14,7 @@ class Sprite(pg.sprite.Sprite):
 
 
 class BuildingColliders(pg.sprite.Sprite):
-    def __init__(self, pos, wh, groups):
+    def __init__(self, pos, wh, groups, z):
         super().__init__(groups)
 
         # rects
@@ -23,3 +24,5 @@ class BuildingColliders(pg.sprite.Sprite):
         self.image = pg.Surface((0, 0))
         self.image = pg.Surface(wh)
         self.image.fill("blue")
+
+        self.z = z

@@ -29,16 +29,16 @@ class AllSprites(pg.sprite.Group):
 
         # camera
         self.camera_borders = {
-            "left": 250, "right": 250, "top": 100, "bottom": 250
+            "left": 200, "right": 200, "top": 200, "bottom": 200
         }
-        left = self.camera_borders["left"] / SCALE
+        left = self.camera_borders["left"]
         width = (self.display_surface.get_size()[0] - (
             self.camera_borders["right"] + self.camera_borders["left"]
-        )) / SCALE
-        top = self.camera_borders["top"] / SCALE
+        ))
+        top = self.camera_borders["top"]
         height = (self.display_surface.get_size()[1] - (
             self.camera_borders["top"] + self.camera_borders["bottom"]
-        )) / SCALE
+        ))
         self.camera_rect = pg.Rect(left, top, width, height)
 
     def box_target_camera(self, target):
@@ -57,18 +57,17 @@ class AllSprites(pg.sprite.Group):
     def draw(self, target_pos):
         self.box_target_camera(target_pos)
 
-        """
-        This solution woks for camera with player cenetered.
-        (Put the 2 blits at the bottom in substractive though)
-        self.offset.x = -(target_pos.center[0] - WINDOW_WIDTH / (2 * SCALE))
-        self.offset.y = -(target_pos.center[1] - WINDOW_HEIGHT / (2 * SCALE))
-        """
+        # sort by z
         for sprite in sorted(self, key=lambda sprite: sprite.z):
             if sprite.z == 0:
                 self.display_surface.blit(sprite.image, sprite.rect.topleft -
                                                         self.offset)
 
+        # sort in y
         for sprite in sorted(self, key=lambda sprite: sprite.rect.bottom):
             if sprite.z == 1:
                 self.display_surface.blit(sprite.image, sprite.rect.topleft -
                                                         self.offset)
+
+
+        # pg.draw.rect(self.display_surface, "orange", self.camera_rect, 2)

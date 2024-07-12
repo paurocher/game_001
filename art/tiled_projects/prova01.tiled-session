@@ -9,11 +9,11 @@
     "file.lastUsedOpenFilter": "All Files (*)",
     "fileStates": {
         "map_prova_001.tmx": {
-            "scale": 0.25,
+            "scale": 1.5,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 94,
-                "y": 206
+                "x": 146.33333333333334,
+                "y": 116.33333333333333
             }
         },
         "objects.tsx": {
@@ -29,7 +29,7 @@
         "terrain.tsx": {
             "dynamicWrapping": false,
             "scaleInDock": 1,
-            "scaleInEditor": 4
+            "scaleInEditor": 1.5
         },
         "terrain_without_collisions.tsx": {
             "dynamicWrapping": false,
@@ -47,14 +47,14 @@
     "map.tileWidth": 24,
     "openFiles": [
         "map_prova_001.tmx",
-        "objects.tsx"
+        "terrain.tsx"
     ],
     "project": "prova01.tiled-project",
     "property.type": "bool",
     "recentFiles": [
-        "objects.tsx",
-        "map_prova_001.tmx",
         "terrain.tsx",
+        "map_prova_001.tmx",
+        "objects.tsx",
         "player.tsx",
         "terrain_without_collisions.tsx"
     ],

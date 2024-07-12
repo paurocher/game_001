@@ -7,7 +7,9 @@ class Player(pg.sprite.Sprite):
 
         self.frames, self.frame_index = frames, 1
         self.state, self.facing_right = "walk_down", True
-        self.image = self.frames[self.state][self.frame_index]
+        self.image = pg.transform.scale_by(
+            self.frames[self.state][self.frame_index], (SCALE, SCALE)
+        )
         self.z = z
 
         # rects
@@ -85,8 +87,12 @@ class Player(pg.sprite.Sprite):
     def animate(self, dt):
         if self.animation:
             self.frame_index += ANIMATION_SPEED * dt
-            self.image = self.frames[self.state][int(self.frame_index % len(
-                self.frames[self.state]))]
+            self.image = pg.transform.scale_by(
+                self.frames[self.state][int(
+                    self.frame_index % len(self.frames[self.state])
+                )],
+                (SCALE, SCALE)
+            )
 
     def update(self, dt):
         self.old_rect = self.hit_box.copy()

@@ -3,6 +3,7 @@ from sprites import Sprite, BuildingColliders
 from groups import CollisionSprite, MainSprites, AllSprites
 from player import Player
 
+
 class Level:
     def __init__(self, tmx_map, level_frames):
         self.display_surface = pg.display.get_surface()
@@ -22,33 +23,34 @@ class Level:
             properties = tmx_map.get_tile_properties(x, y,
                 tmx_map.get_layer_by_name("Terrain").id - 1)
             if properties and properties["collide"]:
-                # red_square = pg.surface.Surface((TILE_SIZE, TILE_SIZE))
-                # pg.draw.rect(red_square, "red", red_square.get_rect(), 0)
+                if DEBUG:
+                    pg.draw.rect(surf, (255, 0, 0), surf.get_rect(), 2, 2)
                 Sprite(
-                    (x * TILE_SIZE, y * TILE_SIZE),
+                    (x * TILE_SIZE * SCALE, y * TILE_SIZE * SCALE),
                     surf,
                     (self.collision_sprites, self.all_sprites),
                     z=0
                 )
             else:
                 Sprite(
-                    (x * TILE_SIZE, y * TILE_SIZE), surf,
+                    (x * TILE_SIZE * SCALE, y * TILE_SIZE * SCALE), surf,
                     (self.all_sprites),
                     z=0
                 )
 
-        # # Flowers
-        # for x, y, surf in tmx_map.get_layer_by_name("Flowers").tiles():
-        #     Sprite((x * TILE_SIZE, y * TILE_SIZE), surf, bg.all_sprites)
+        # Flowers
+        for x, y, surf in tmx_map.get_layer_by_name("Flowers").tiles():
+            Sprite((x * TILE_SIZE * SCALE, y * TILE_SIZE * SCALE), surf,
+                self.all_sprites, 0)
 
-        # # Vegetation
-        # for obj in tmx_map.get_layer_by_name("Vegetation"):
-        #     Sprite(
-        #         (obj.x, obj.y),
-        #         obj.image,
-        #         (self.all_sprites),
-        #         z=1
-        #     )
+        # Vegetation
+        for obj in tmx_map.get_layer_by_name("Vegetation"):
+            Sprite(
+                (obj.x * SCALE, obj.y * SCALE),
+                obj.image,
+                (self.all_sprites),
+                z=1
+            )
 
         # characters
         for obj in tmx_map.get_layer_by_name("Characters"):
@@ -61,23 +63,37 @@ class Level:
                     z=1
                 )
 
-        # # Buildings
-        # for obj in tmx_map.get_layer_by_name("Buildings"):
-        #     Sprite((obj.x, obj.y), obj.image, (self.all_sprites,
-        #     self.world_sprites))
-        #     colliders = obj.properties["colliders"][0]
-        #     BuildingColliders(
-        #         (colliders.x + obj.x, colliders.y + obj.y),
-        #         (colliders.width, colliders.height),
-        #         (self.collision_sprites, self.all_sprites),
-        #     )
+        # Buildings
+        for obj in tmx_map.get_layer_by_name("Buildings"):
+            colliders = obj.properties["colliders"][0]
+            BuildingColliders(
+                pos=(
+                    colliders.x * SCALE + obj.x * SCALE,
+                    colliders.y * SCALE + obj.y * SCALE
+                ),
+                wh=(colliders.width * SCALE, colliders.height * SCALE),
+                groups=(self.collision_sprites),
+                z=1
+            )
 
-        # self.all_sprites.center_to_target()
+            if DEBUG:
+                pg.draw.rect(
+                    obj.image,
+                    (255, 0, 0),
+                    (colliders.x * SCALE, colliders.y * SCALE,
+                    colliders.width * SCALE,
+                    colliders.height * SCALE),
+                    2,
+                    2
+                )
+            Sprite(
+                (obj.x * SCALE, obj.y * SCALE),
+                obj.image,
+                self.all_sprites,
+                z=1
+            )
 
     def run(self, dt):
         self.display_surface.fill("gray")
-        # self.collision_sprites.draw(self.display_surface)
         self.all_sprites.update(dt)
         self.all_sprites.draw(self.player.rect)
-        # self.main_sprites.update(dt)
-        # self.main_sprites.draw(self.display_surface)

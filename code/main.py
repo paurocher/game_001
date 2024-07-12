@@ -6,6 +6,7 @@ from pytmx.util_pygame import load_pygame
 from settings import *
 from level import Level
 from support import *
+from debug import DebugText
 
 class Game:
     def __init__(self):
@@ -24,13 +25,16 @@ class Game:
 
         self.current_stage = Level(self.tmx_maps[0], self.level_frames)
 
+        self.deb = DebugText("lalala", 90, (0,0), "white", "black")
+
+
     def import_assets(self):
         self.level_frames = {
             "player": import_sub_folders("..", "art", "objects", "Player")
         }
 
+
     def run(self):
-        global SCALE
         while True:
             dt = self.clock.tick() / 1000
             # print(dt)
@@ -47,6 +51,7 @@ class Game:
 
             self.current_stage.run(dt)
 
+            self.deb.update(dt)
             pg.display.update()
 
 if __name__ == "__main__":
