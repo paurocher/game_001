@@ -20,23 +20,37 @@ class Level:
     def setup(self, tmx_map, level_frames):
         # Terrain
         for x, y, surf in tmx_map.get_layer_by_name("Terrain").tiles():
-            properties = tmx_map.get_tile_properties(x, y,
-                tmx_map.get_layer_by_name("Terrain").id - 1)
-            if properties and properties["collide"]:
-                if DEBUG:
-                    pg.draw.rect(surf, (255, 0, 0), surf.get_rect(), 2, 2)
-                Sprite(
-                    (x * TILE_SIZE * SCALE, y * TILE_SIZE * SCALE),
-                    surf,
-                    (self.collision_sprites, self.all_sprites),
-                    z=0
+            # properties = tmx_map.get_tile_properties(x, y,
+            #     tmx_map.get_layer_by_name("Terrain").id - 1)
+            # if properties and properties["collide"]:
+            #     if DEBUG:
+            #         pg.draw.rect(surf, (255, 0, 0), surf.get_rect(), 2, 2)
+            #     Sprite(
+            #         (x * TILE_SIZE * SCALE, y * TILE_SIZE * SCALE),
+            #         surf,
+            #         (self.collision_sprites, self.all_sprites),
+            #         z=0
+            #     )
+            # else:
+            Sprite(
+                (x * TILE_SIZE * SCALE, y * TILE_SIZE * SCALE), surf,
+                (self.all_sprites),
+                z=0
+            )
+        for x, y, surf in tmx_map.get_layer_by_name("Terrain_collide").tiles():
+            if DEBUG:
+                surf_a = pg.Surface(
+                    (surf.get_rect().width, surf.get_rect().height),
+                    pg.SRCALPHA
                 )
-            else:
-                Sprite(
-                    (x * TILE_SIZE * SCALE, y * TILE_SIZE * SCALE), surf,
-                    (self.all_sprites),
-                    z=0
-                )
+                pg.draw.rect(surf_a, (255, 0, 0), surf.get_rect(), 2, 2)
+                
+            Sprite(
+                (x * TILE_SIZE * SCALE, y * TILE_SIZE * SCALE),
+                surf_a,
+                (self.collision_sprites, self.all_sprites),
+                z=0
+            )
 
         # Flowers
         for x, y, surf in tmx_map.get_layer_by_name("Flowers").tiles():

@@ -253,17 +253,17 @@
  </tile>
  <tile id="50">
   <properties>
-   <property name="collide" type="bool" value="true"/>
+   <property name="collide" type="bool" value="false"/>
   </properties>
  </tile>
  <tile id="51">
   <properties>
-   <property name="collide" type="bool" value="true"/>
+   <property name="collide" type="bool" value="false"/>
   </properties>
  </tile>
  <tile id="52">
   <properties>
-   <property name="collide" type="bool" value="true"/>
+   <property name="collide" type="bool" value="false"/>
   </properties>
  </tile>
  <tile id="53">
@@ -413,7 +413,7 @@
  </tile>
  <tile id="82">
   <properties>
-   <property name="collide" type="bool" value="true"/>
+   <property name="collide" type="bool" value="false"/>
   </properties>
  </tile>
  <tile id="83">
@@ -423,7 +423,7 @@
  </tile>
  <tile id="84">
   <properties>
-   <property name="collide" type="bool" value="true"/>
+   <property name="collide" type="bool" value="false"/>
   </properties>
  </tile>
  <tile id="85">
@@ -573,17 +573,17 @@
  </tile>
  <tile id="114">
   <properties>
-   <property name="collide" type="bool" value="true"/>
+   <property name="collide" type="bool" value="false"/>
   </properties>
  </tile>
  <tile id="115">
   <properties>
-   <property name="collide" type="bool" value="true"/>
+   <property name="collide" type="bool" value="false"/>
   </properties>
  </tile>
  <tile id="116">
   <properties>
-   <property name="collide" type="bool" value="true"/>
+   <property name="collide" type="bool" value="false"/>
   </properties>
  </tile>
  <tile id="117">
@@ -1553,17 +1553,17 @@
  </tile>
  <tile id="310">
   <properties>
-   <property name="collide" type="bool" value="false"/>
+   <property name="collide" type="bool" value="true"/>
   </properties>
  </tile>
  <tile id="311">
   <properties>
-   <property name="collide" type="bool" value="false"/>
+   <property name="collide" type="bool" value="true"/>
   </properties>
  </tile>
  <tile id="312">
   <properties>
-   <property name="collide" type="bool" value="false"/>
+   <property name="collide" type="bool" value="true"/>
   </properties>
  </tile>
  <tile id="313">
@@ -1713,7 +1713,7 @@
  </tile>
  <tile id="342">
   <properties>
-   <property name="collide" type="bool" value="false"/>
+   <property name="collide" type="bool" value="true"/>
   </properties>
  </tile>
  <tile id="343">
@@ -1723,7 +1723,7 @@
  </tile>
  <tile id="344">
   <properties>
-   <property name="collide" type="bool" value="false"/>
+   <property name="collide" type="bool" value="true"/>
   </properties>
  </tile>
  <tile id="345">
@@ -1873,17 +1873,17 @@
  </tile>
  <tile id="374">
   <properties>
-   <property name="collide" type="bool" value="false"/>
+   <property name="collide" type="bool" value="true"/>
   </properties>
  </tile>
  <tile id="375">
   <properties>
-   <property name="collide" type="bool" value="false"/>
+   <property name="collide" type="bool" value="true"/>
   </properties>
  </tile>
  <tile id="376">
   <properties>
-   <property name="collide" type="bool" value="false"/>
+   <property name="collide" type="bool" value="true"/>
   </properties>
  </tile>
  <tile id="377">

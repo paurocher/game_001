@@ -10,10 +10,10 @@
     "fileStates": {
         "map_prova_001.tmx": {
             "scale": 1.5,
-            "selectedLayer": 0,
+            "selectedLayer": 1,
             "viewCenter": {
-                "x": 146.33333333333334,
-                "y": 116.33333333333333
+                "x": 304.3333333333333,
+                "y": 132.33333333333331
             }
         },
         "objects.tsx": {
@@ -28,8 +28,8 @@
         },
         "terrain.tsx": {
             "dynamicWrapping": false,
-            "scaleInDock": 1,
-            "scaleInEditor": 1.5
+            "scaleInDock": 0.8646,
+            "scaleInEditor": 3
         },
         "terrain_without_collisions.tsx": {
             "dynamicWrapping": false,

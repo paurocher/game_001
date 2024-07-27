@@ -25,7 +25,9 @@ class Game:
 
         self.current_stage = Level(self.tmx_maps[0], self.level_frames)
 
-        self.deb = DebugText("lalala", 90, (0,0), "white", "black")
+        self.deb = DebugText(
+            size=15, position=(0,0), color="white", bg_color="black"
+        )
 
 
     def import_assets(self):
@@ -51,7 +53,7 @@ class Game:
 
             self.current_stage.run(dt)
 
-            self.deb.update(dt)
+            self.deb.update("dt: {}".format(dt))
             pg.display.update()
 
 if __name__ == "__main__":

@@ -5,7 +5,6 @@ class Sprite(pg.sprite.Sprite):
     def __init__(self, pos, surf, groups, z):
         super().__init__(groups)
         self.image = pg.transform.scale_by(surf, (SCALE, SCALE))
-        print(self.image, self.image.get_rect())
 
         # rects
         self.rect = self.image.get_frect(topleft=pos)

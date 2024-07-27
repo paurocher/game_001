@@ -1,8 +1,8 @@
 from settings import *
 
-class Player(pg.sprite.Sprite):
+class Character(pg.sprite.Sprite):
     def __init__(self, pos, groups, collision_sprites, frames, z):
-        super().__init__(groups)
+        super().__init__(self, groups)
 
         self.frames, self.frame_index = frames, 1
         self.state, self.facing_right = "walk_down", True
@@ -25,36 +25,9 @@ class Player(pg.sprite.Sprite):
         # collision
         self.collision_sprites = collision_sprites
 
-    def input(self):
-        keys = pg.key.get_pressed()
-        self.animation = True
-
-        input_vector = vector()
-        if keys[pg.K_RIGHT]:
-            input_vector.x += 1
-            self.state = "walk_right"
-        if keys[pg.K_LEFT]:
-            input_vector.x -= 1
-            self.state = "walk_left"
-        if keys[pg.K_UP]:
-            input_vector.y -= 1
-            self.state = "walk_up"
-        if keys[pg.K_DOWN]:
-            input_vector.y += 1
-            self.state = "walk_down"
-        if input_vector:
-            self.direction = input_vector.normalize()
-        else:
-            self.direction = input_vector
-            self.animation = False
-
-    def move(self, dt):
-        self.hit_box.x += self.direction.x * self.speed * dt
-        self.collision("horizontal")
-        self.hit_box.y += self.direction.y * self.speed * dt
-        self.collision("vertical")
-
-        self.rect.center = self.hit_box.center
+    def move(self):
+        """"""
+        pass
 
     def collision(self, axis):
         for sprite in self.collision_sprites:
@@ -78,22 +51,17 @@ class Player(pg.sprite.Sprite):
                         self.hit_box.bottom = int(sprite.rect.top)
 
     def animate(self, dt):
-        if self.animation:
-            self.frame_index += ANIMATION_SPEED * dt
-            self.image = pg.transform.scale_by(
-                self.frames[self.state][int(
-                    self.frame_index % len(self.frames[self.state])
-                )],
-                (SCALE, SCALE)
-            )
+        pass
+        # if self.animation:
+        #     self.frame_index += ANIMATION_SPEED * dt
+        #     self.image = pg.transform.scale_by(
+        #         self.frames[self.state][int(
+        #             self.frame_index % len(self.frames[self.state])
+        #         )],
+        #         (SCALE, SCALE)
+        #     )
 
     def update(self, dt):
         self.old_rect = self.hit_box.copy()
-        self.input()
         self.move(dt)
         self.animate(dt)
-
-        if DEBUG:
-            rect_draw = self.hit_box.copy()
-            rect_draw.center = (self.rect.w / 2, self.rect.h / 2)
-            pg.draw.rect(self.image, "red", rect_draw, 1)

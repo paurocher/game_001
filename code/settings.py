@@ -18,4 +18,4 @@ Z_LAYERS = {
     "b": 1,
 }
 
-DEBUG = False
+DEBUG = True
